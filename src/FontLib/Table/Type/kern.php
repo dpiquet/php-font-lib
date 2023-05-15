@@ -46,8 +46,11 @@ class kern extends Table {
 
         $values = $font->readUInt16Many($subtable["nPairs"] * 3);
         for ($i = 0, $idx = 0; $i < $subtable["nPairs"]; $i++) {
+          if (!isset($values[$idx])) { continue; }
           $left  = $values[$idx++];
+          if (!isset($values[$idx])) { continue; }
           $right = $values[$idx++];
+          if (!isset($values[$idx])) { continue; }
           $value = $values[$idx++];
 
           if ($value >= 0x8000) {
